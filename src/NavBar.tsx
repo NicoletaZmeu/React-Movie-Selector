@@ -1,16 +1,17 @@
+import {Link} from 'react-router';
 
 function NavBar() {
 
     return <nav>
         <ul className="nav justify-content-end">
             <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">New Releases</a>
+                <Link to='/new-release' className="nav-link active" aria-current="page">New Releases</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">Watched List</a>
+                <Link to='/watched' className="nav-link active" aria-current="page">Watched List</Link>
             </li>
             <li className="nav-item">
-                <a className="nav-link" href="#">To Watch</a>
+                <Link to='/to-watch' className="nav-link active" aria-current="page">To Watch</Link>
             </li>
             <li className="nav-item ">
                 <a className="nav-link disabled" aria-disabled="true">User</a>
