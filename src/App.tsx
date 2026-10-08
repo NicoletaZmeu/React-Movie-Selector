@@ -1,7 +1,7 @@
 import {Routes, Route} from "react-router";
-import Home from './components/Home.tsx';
-import Movies from './components/Movies.tsx';
-import Navbar from './components/NavBar.tsx';
+import Home from './pages/Home.tsx';
+import Movies from './pages/Movies.tsx';
+import Navbar from './NavBar.tsx';
 import './App.css';
 
 function App() {
