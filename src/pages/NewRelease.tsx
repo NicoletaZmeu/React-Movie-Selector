@@ -4,6 +4,15 @@ import {Link} from 'react-router';
 import MovieCard from './MovieCard.tsx';
 
 
+function formatDate(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+
 type Movie = {
     id: number,
     title: string,
@@ -23,7 +32,20 @@ function NewRelease () {
     };
 
     useEffect(() =>{
-        fetch(`https://api.themoviedb.org/3/movie/popular?page=1`, options)
+
+        const endDate = new Date();
+        const startDate = new Date(endDate) ;
+        startDate.setDate(endDate.getDate() - 60);
+
+        const filters = new URLSearchParams({
+            region: "IE",
+            watch_region: "IE",
+            with_release_type: "4",
+            "release_date.gte": formatDate(startDate),
+            "release_date.lte": formatDate(endDate),
+        });
+
+        fetch(`https://api.themoviedb.org/3/discover/movie?${filters}`, options)
         .then(response => response.json())
         .then(data => {
             console.log(data.results);
