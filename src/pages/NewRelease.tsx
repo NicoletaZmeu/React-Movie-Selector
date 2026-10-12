@@ -38,7 +38,6 @@ function NewRelease () {
         startDate.setDate(endDate.getDate() - 60);
 
         const filters = new URLSearchParams({
-            region: "IE",
             watch_region: "IE",
             with_release_type: "4",
             "release_date.gte": formatDate(startDate),
