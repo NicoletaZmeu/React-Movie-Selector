@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard.tsx";
 type Movie = {
     id: number,
     title: string,
+    overview: string,
     poster_path: string | null,
 }
 
@@ -28,7 +29,7 @@ function Home () {
         }
     };
 
-    function recommend() {
+    function recommend(pageNumber = 1) {
         
         // 1
         const filter = new URLSearchParams({
@@ -36,6 +37,7 @@ function Home () {
             language: "en",
             with_genres: mood,
             sort_by: "popularity.desc",
+            page: String(pageNumber),
         });
 
 
@@ -48,7 +50,7 @@ function Home () {
             filter.set("with_runtime.gte", "90");
         }
 
-        if (language === ""){
+        if (language !== ""){
             filter.set("with_original_language", language);
         }
 
@@ -74,8 +76,15 @@ function Home () {
 
          fetch(`https://api.themoviedb.org/3/discover/movie?${filter}`, options)
         .then(response => response.json())
+        // .then(data => {
+        //     console.log(data.results);
+        //     setMovies(data.results);
+        // })
         .then(data => {
-            console.log(data.results);
+            console.log("Movies on this page:", data.results.length);
+            console.log("Total matching movies:", data.total_results);
+            console.log("Total pages:", data.total_pages);
+
             setMovies(data.results);
         })
         .catch(error => console.error(error));
@@ -184,7 +193,11 @@ function Home () {
                     margin: '4rem',
                 }}
             >
-                {movies.map(movie => ( <MovieCard movie = {movie}/>))}
+
+                {movies.map(movie => (
+                    <MovieCard key={movie.id} movie={movie} />
+                ))}
+
             </div>
         )}
     </main>;
