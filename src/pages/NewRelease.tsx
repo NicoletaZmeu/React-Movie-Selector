@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import {useState} from 'react';
 import {Link} from 'react-router';
+import MovieCard from './MovieCard.tsx';
 
 
 type Movie = {
@@ -36,18 +37,18 @@ function NewRelease () {
         <h1>New Releases!</h1>
         <Link to='/' className='btn btn-primary'>Back Home</Link>
 
-        {movies.map(movie => (
-            <div key={movie.id}>
-                {movie.poster_path && (
-                <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={`${movie.title} poster`}
-                    width={200}
-                />
-        )}
-    <p>{movie.title}</p>
-  </div>
-))}
-    </main>
+            <div 
+                style ={{
+                    display: 'grid',
+                    justifyItems: 'center',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                    gap: '3rem',
+                    margin: '4rem',
+                }}
+            >
+                {movies.map(movie => ( <MovieCard movie = {movie}/>))}
+            </div>
+       
+    </main>;
 }
 export default NewRelease;

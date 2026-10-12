@@ -2,7 +2,6 @@
 type Movie = {
     id: number,
     title: string,
-    overview: string,
     poster_path: string | null,
 }
 
@@ -13,11 +12,16 @@ type MovieCardProps = {
 function MovieCard({ movie } : MovieCardProps){
     return (
         <article className='movie-card'>
+            <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={`${movie.title} poster`}
+                    width={200}
+                />
             <h2>{movie.title}</h2>
-            <p>{movie.overview}</p>
+
         </article>
     );
 
 }
 
-export default MovieCard
+export default MovieCard;

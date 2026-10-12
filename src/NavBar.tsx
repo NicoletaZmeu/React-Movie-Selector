@@ -3,9 +3,8 @@ import {Link} from 'react-router';
 function NavBar() {
 
     return <nav 
-        className="navbar navbar-expand-lg px-2 justify-content-end sticky-top"
+        className="navbar navbar-expand-lg  bg-transparent px-2 justify-content-end sticky-top"
          style ={{
-            backgroundColor: "rgba(0, 0, 0, 0.35)",
             backdropFilter: "blur(12px)",
             borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
             marginBottom: "1rem",
@@ -13,15 +12,15 @@ function NavBar() {
         >
         
        
-        <ul className="nav justify-content-end">
-            <li className="nav-item">
-                <Link to='/new-release' className="nav-link active" aria-current="page">New Releases</Link>
+        <ul className="nav justify-content-end ">
+            <li className="nav-item ">
+                <Link to='/new-release' className="nav-link active text-white" aria-current="page">New Releases</Link>
             </li>
             <li className="nav-item">
-                <Link to='/watched' className="nav-link active" aria-current="page">Watched List</Link>
+                <Link to='/watched' className="nav-link active text-white" aria-current="page">Watched List</Link>
             </li>
             <li className="nav-item">
-                <Link to='/to-watch' className="nav-link active" aria-current="page">To Watch</Link>
+                <Link to='/to-watch' className="nav-link active text-white" aria-current="page">To Watch</Link>
             </li>
             <li className="nav-item ">
                 <a className="nav-link disabled" aria-disabled="true">User</a>
