@@ -48,6 +48,15 @@ function MovieCard({ movie } : MovieCardProps){
 
            </button>
 
+            {preview && (
+                <div>
+                    <h2>{movie.title}</h2>
+                    <p>{movie.overview}</p>
+                    <button type="button" onClick={()=>setPreview(false)}>
+                        Close
+                    </button>
+                </div>
+            )}
         </article>
     );
 
