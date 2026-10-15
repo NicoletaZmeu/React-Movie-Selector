@@ -132,3 +132,11 @@
     transform: rotate(360deg);
     }
 }
+
+
+.shadow-dance-text {
+    color: #fff;
+    padding-top: 20px;
+    margin: 0px  60px;
+    font-size: 2.5rem;
+}

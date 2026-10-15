@@ -104,9 +104,13 @@ function MovieCard({ movie } : MovieCardProps){
 
                                 />
                             </div>
-                            <div>
-                                <h2>{movie.title}</h2>
+                            <div style={{justifyItems:"center", fontSize: "20px", paddingTop:"20px"}}>
+                                <p style={{fontSize:"50px"}}>{movie.title}</p>
                                 <p>{movie.overview}</p>
+                                <div style={{display:"flex", justifyContent:"center", gap:"50px"}}>
+                                    <button>Watched🎞️</button>
+                                    <button>To watch🍿</button>
+                                </div>
                             </div>
                         </div>
                         <button type="button" onClick={()=>setPreview(false)}

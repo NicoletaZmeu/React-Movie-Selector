@@ -196,6 +196,8 @@ function Recommend () {
         {step === 8 && (
              <div>
 
+                    <p className="shadow-dance-text">🎬 Find the one that feels right to you. </p>
+
                <div 
                     style ={{
                         display: 'grid',
