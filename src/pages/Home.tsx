@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import Welcome from './Welcome.tsx';
 import MovieCard from "./MovieCard.tsx";
 
 type Movie = {
@@ -20,6 +21,9 @@ function Home () {
 
 
     const [movies, setMovies] = useState<Movie[]>([]);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [loading, setLoading] = useState(false);
 
     const options = {
         method: 'GET',
@@ -30,6 +34,9 @@ function Home () {
     };
 
     function recommend(pageNumber = 1) {
+
+        if(loading) return;
+        setLoading(true);
         
         // 1
         const filter = new URLSearchParams({
@@ -76,28 +83,25 @@ function Home () {
 
          fetch(`https://api.themoviedb.org/3/discover/movie?${filter}`, options)
         .then(response => response.json())
-        // .then(data => {
-        //     console.log(data.results);
-        //     setMovies(data.results);
-        // })
         .then(data => {
-            console.log("Movies on this page:", data.results.length);
-            console.log("Total matching movies:", data.total_results);
-            console.log("Total pages:", data.total_pages);
-
-            setMovies(data.results);
+            console.log(data.results);
+            setMovies( previous => pageNumber === 1 ? data.results : [...previous, ...data.results]);
+            setPage(data.page);
+            setTotalPages(data.total_pages);
         })
-        .catch(error => console.error(error));
+
+        .catch(error => console.error(error))
+        .finally(()=> setLoading(false));
     }
 
     
 
     return <main>
-        <h1>Welcome back!</h1>
-        <h2>Sit down and relax ...</h2>
 
-        {step === 0 && (
-            <button onClick={()=> setStep(1)}>Find a Movie</button>
+
+
+        {step === 0 &&(
+            <Welcome setNext={() => setStep(1)}/>
         )}
 
         { step === 1 && (
@@ -184,19 +188,42 @@ function Home () {
         )}
 
         {step === 8 && (
-             <div 
-                style ={{
-                    display: 'grid',
-                    justifyItems: 'center',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '3rem',
-                    margin: '4rem',
-                }}
-            >
+             <div>
 
-                {movies.map(movie => (
-                    <MovieCard key={movie.id} movie={movie} />
-                ))}
+               <div 
+                    style ={{
+                        display: 'grid',
+                        justifyItems: 'center',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                        gap: '3rem',
+                        margin: '4rem',
+                    }}
+                >
+                    {movies.map(movie => (<MovieCard key={movie.id} movie={movie} />))}
+               </div>
+                {page < totalPages && (
+
+                <div 
+                    style={{display:"flex", justifyContent:"center"}}
+                >
+                    <button 
+                        style={{
+                            padding: "40px",
+                            margin:"20px",
+                            backgroundColor: "transparent",
+                            color:"white",
+                            fontSize:"35px",
+                            border: "none",
+                        }} 
+                        type="button" 
+                        disabled={loading}
+                        onClick={() => recommend(page + 1)}
+                        
+                    >
+                        Load more
+                    </button>
+                </div>
+            )}
 
             </div>
         )}

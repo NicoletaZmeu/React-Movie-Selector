@@ -7,8 +7,22 @@ body {
   background: radial-gradient(circle at right bottom, #870000 0%, #190a05 71%);
   color: white !important;
   font-family: "Courier Prime", monospace !important;
+background:
+  radial-gradient(
+    ellipse at 90% 10%,
+    rgba(128, 20, 55, 0.8),
+    transparent 55%
+  ),
+  radial-gradient(
+    ellipse at 10% 90%,
+    rgba(105, 15, 45, 0.8),
+    transparent 55%
+  ),
+  radial-gradient(
+    ellipse at 65% 25%,
+    rgba(65, 15, 75, 0.4),
+    transparent 45%
+  ),
+  linear-gradient(#080406, #080406);
 
-}
-
-
-
+  } 

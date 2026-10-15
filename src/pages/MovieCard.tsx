@@ -73,7 +73,6 @@ function MovieCard({ movie } : MovieCardProps){
                             width: "900px",
                             maxWidth: "100%",
                         }}
-                    
                     >
                         <div 
                         style={{

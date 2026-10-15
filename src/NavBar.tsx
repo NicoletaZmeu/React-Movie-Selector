@@ -3,16 +3,25 @@ import {Link} from 'react-router';
 function NavBar() {
 
     return <nav 
-        className="navbar navbar-expand-lg  bg-transparent px-2 justify-content-end sticky-top"
-         style ={{
-            backdropFilter: "blur(12px)",
-            borderBottom: "1px solid rgba(255, 255, 255, 0.15)",
+        className="navbar navbar-expand-lg bg-transparent px-3 px-lg-5 sticky-top"         
+        style ={{
+            backdropFilter: "blur(15px)",
+            borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
             marginBottom: "1rem",
+            fontSize: "24px",
+            padding: "20px"
          }}
         >
         
+        <a href="/" className='nav-link text-white' style={{fontSize:"34px"}}> 
+        MoviePicker
+        <span style={{ fontSize: "30px", marginRight: "8px" }}>
+            🍿
+        </span></a>
+
        
-        <ul className="nav justify-content-end ">
+        <ul className="nav ms-auto">
+          
             <li className="nav-item ">
                 <Link to='/new-release' className="nav-link active text-white" aria-current="page">New Releases</Link>
             </li>
@@ -25,7 +34,9 @@ function NavBar() {
             <li className="nav-item ">
                 <a className="nav-link disabled" aria-disabled="true">User</a>
             </li>
-</ul>
+    </ul>
+    
+
     </nav>;
 
 }
