@@ -44,8 +44,20 @@ function MovieCard({ movie } : MovieCardProps){
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={`${movie.title} poster`}
                 width={200}
+                style={{borderRadius:"12px"}}
             />
-            <h2>{movie.title}</h2>
+            <p
+                style ={{
+                    fontSize: "1.25rem",
+                    height: "2.8em",
+                    margin: "8px auto",
+                    display: "-webkit-box",
+                    WebkitBoxOrient: "vertical",
+                    WebkitLineClamp: 2,
+                    overflow: "hidden",
+                    overflowWrap: "anywhere",
+                }}
+            >{movie.title}</p>
 
            </button>
 
@@ -72,6 +84,7 @@ function MovieCard({ movie } : MovieCardProps){
                             overflow: "auto",
                             width: "900px",
                             maxWidth: "100%",
+                            position: "relative"
                         }}
                     >
                         <div 
@@ -87,6 +100,8 @@ function MovieCard({ movie } : MovieCardProps){
                                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                     alt={`${movie.title} poster`}
                                     width={400}
+                                    style={{borderRadius:"12px"}}
+
                                 />
                             </div>
                             <div>
@@ -94,8 +109,19 @@ function MovieCard({ movie } : MovieCardProps){
                                 <p>{movie.overview}</p>
                             </div>
                         </div>
-                        <button type="button" onClick={()=>setPreview(false)}>
-                            Close
+                        <button type="button" onClick={()=>setPreview(false)}
+                            style={{
+                                position:"absolute",
+                                top: "12px",
+                                right: "12px",
+                                background: "transparent",
+                                border: "none",
+                                color: "white",
+                                fontSize:"1.5rem",
+                                fontFamily: "Arial",
+                            }}
+                            >
+                            X
                         </button>
                     </div>
 

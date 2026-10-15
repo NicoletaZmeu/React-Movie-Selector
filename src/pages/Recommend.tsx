@@ -199,6 +199,7 @@ function Recommend () {
                <div 
                     style ={{
                         display: 'grid',
+                        alignItems:"start",
                         justifyItems: 'center',
                         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                         gap: '3rem',
